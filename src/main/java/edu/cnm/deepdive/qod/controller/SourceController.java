@@ -1,6 +1,7 @@
 package edu.cnm.deepdive.qod.controller;
 
 import edu.cnm.deepdive.qod.model.dao.SourceRepository;
+import edu.cnm.deepdive.qod.model.entity.Quote;
 import edu.cnm.deepdive.qod.model.entity.Source;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -58,6 +59,16 @@ public class SourceController {
   public void delete(@PathVariable("sourceId") UUID sourceId) {
     sourceRepository.delete(get(sourceId));
   }
+
+  @GetMapping(value = "{quoteId}", produces = MediaType.APPLICATION_JSON_VALUE)
+  public Quote get(
+      @PathVariable("sourceId") UUID sourceId, @PathVariable("quoteId") UUID quoteId) {
+    Source source = sourceRepository.findById(sourceId).get();
+    return quoteRepository.findBySourceId(source, quoteId).get();
+
+  }
+
+
 
   @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "Source not found")
   @ExceptionHandler(NoSuchElementException.class)

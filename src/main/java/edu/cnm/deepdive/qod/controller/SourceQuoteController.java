@@ -21,14 +21,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/sources/{sourceId}/quotes")
-public class QuoteController {
+public class SourceQuoteController {
 
   private SourceRepository sourceRepository;
   private QuoteRepository quoteRepository;
 
   @Autowired
 
-  public QuoteController(SourceRepository sourceRepository,
+  public SourceQuoteController(SourceRepository sourceRepository,
       QuoteRepository quoteRepository) {
     this.sourceRepository = sourceRepository;
     this.quoteRepository = quoteRepository;

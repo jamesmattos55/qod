@@ -1,5 +1,6 @@
 package edu.cnm.deepdive.qod.model.entity;
 
+import edu.cnm.deepdive.qod.view.FlatSource;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,7 +19,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.springframework.lang.NonNull;
 
 @Entity
-public class Source {
+public class Source implements FlatSource {
 
   @Id
   @GeneratedValue(generator = "uuid2")
